@@ -1,0 +1,58 @@
+---
+title: "Homework 1"
+author: "Lea Sauer, 23201699"
+format:
+  pdf:
+    documentclass: report
+    classoption: [twocolumn, landscape]
+    toc: true #table of contents
+    toc-title: '**Contents**'
+    lof: true
+editor: visual
+execute: 
+  eval: true
+  echo: false
+  message: false
+  warning: false
+  size: 15
+---
+
+## Dataset
+The **BostonHousing2** data set from the 'mlbench' package contains 506 observations of 19 features from a census in Boston in the 1970. It contains some additional information to the orginal  **BostonHousing** data set.
+```{r}
+#| label: dataset
+#Load in the dataset from mlbench package 
+data("BostonHousing2", package = "mlbench")
+```
+
+From the data set I am using the features
+
+-medv: median value of owner-occupied homes in USD 1000's
+
+-crim: per capita crime rate by town
+
+## Visualisation
+
+```{r}
+#Load packages
+library(ggplot2)
+```
+
+
+```{r}
+#| label: plot
+#| fig-width: 10
+#| fig-height: 5
+#| fig-cap: 'Crime rate vs House value on the Boston 1970 housing market'
+#| warning: false
+
+ggplot(BostonHousing2, aes(x=medv,y=crim))+
+  geom_point()+
+  ggtitle('Crime rate vs House value')+
+  labs(x='median value of owner-occupied homes in USD 1000s',y='per capita crime rate by town')+
+  theme(plot.title = element_text( size=14, face="bold", hjust=0.5))+
+geom_text(aes(13.5, 88.97620, label="Highest crime", color='red'))+ theme(legend.position = "none")
+  
+```
+In the figure we observe a lower crime rate the higher the housing value in Boston. 
+
