@@ -18,7 +18,9 @@ execute:
 ---
 
 ## Dataset
-The **BostonHousing2** data set from the 'mlbench' package contains 506 observations of 19 features from a census in Boston in the 1970. It contains some additional information to the orginal  **BostonHousing** data set.
+
+The **BostonHousing2** data set from the 'mlbench' package contains 506 observations of 19 features from a census in Boston in the 1970. It contains some additional information to the orginal **BostonHousing** data set.
+
 ```{r}
 #| label: dataset
 #Load in the dataset from mlbench package 
@@ -38,7 +40,6 @@ From the data set I am using the features
 library(ggplot2)
 ```
 
-
 ```{r}
 #| label: plot
 #| fig-width: 10
@@ -46,13 +47,15 @@ library(ggplot2)
 #| fig-cap: 'Crime rate vs House value on the Boston 1970 housing market'
 #| warning: false
 
+#Create plot 
 ggplot(BostonHousing2, aes(x=medv,y=crim))+
   geom_point()+
   ggtitle('Crime rate vs House value')+
   labs(x='median value of owner-occupied homes in USD 1000s',y='per capita crime rate by town')+
   theme(plot.title = element_text( size=14, face="bold", hjust=0.5))+
-geom_text(aes(13.5, 88.97620, label="Highest crime", color='red'))+ theme(legend.position = "none")
+geom_text(aes(13.5, 88.97620, label="Highest crime", color='red'))+ #label at point with highest crime rate
+  theme(legend.position = "none")
   
 ```
-In the figure we observe a lower crime rate the higher the housing value in Boston. 
 
+In the figure we observe a lower crime rate the higher the housing value in Boston.
